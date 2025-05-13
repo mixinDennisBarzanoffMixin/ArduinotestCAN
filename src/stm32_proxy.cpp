@@ -26,6 +26,13 @@ void CheckCANMessages(void);
 // Puffer für serielle Ausgabe
 uint8_t uart_tx_buffer[128];
 
+// SysTick Handler für HAL_GetTick()
+extern "C" void SysTick_Handler(void)
+{
+  HAL_IncTick();
+  HAL_SYSTICK_IRQHandler();
+}
+
 int main(void)
 {
   // HAL-Initialisierung
